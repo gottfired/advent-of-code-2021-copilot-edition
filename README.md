@@ -13,3 +13,7 @@ None of the code was written by me. I only write comments and then use autocompl
 
 - day2 I could copy and paste the instructions from AOC and it worked
 - day5 I could say `// function part2 is the same as part1 but also with diagonal lines`. **Thats pretty amazing!**
+
+## Lowlights so far
+
+- day6 part 2. Copilot didn't understand what I want. Had to hand code it.

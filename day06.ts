@@ -94,4 +94,63 @@ function part1() {
   console.log(input.length());
 }
 
-part1();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Everything below here was hand coded and NOT using copilot which was wayyyy to dumb to understand what I want!
+
+const childCountCache = {} as { [key: string]: number };
+
+function numChildren(cycle: number, numSteps: number): number {
+  if (numSteps < cycle + 1) {
+    return 0;
+  }
+
+  // subtract cycle+1 so we start at cycle count 6 which is birth date
+  const steps = numSteps - cycle - 1;
+  const directChildren = 1 + Math.floor(steps / 7);
+  let sum = 0;
+  for (let i = steps; i >= 7; i -= 7) {
+    // if we have a cached value use that
+    if (!!childCountCache[`8,${i}`]) {
+      sum += childCountCache[`8,${i}`];
+    } else {
+      // else calculate it and cache it
+      const num = numChildren(8, i);
+      childCountCache[`8,${i}`] = num;
+      sum += num;
+    }
+  }
+  return sum + directChildren;
+}
+
+// function to read comma separated list of numbers into number array
+function readInput2(fileName: string): number[] {
+  const input = fs.readFileSync(fileName, "utf8");
+  const numbers = input.split(",");
+  const result = [];
+  for (const number of numbers) {
+    result.push(parseInt(number, 10));
+  }
+  return result;
+}
+
+function part2() {
+  // read file day06input as comma separated list of numbers into array
+  const input = readInput2("day06input");
+
+  // cache warmup by going from 0 to 256 which is fast, because higher values can use cached values from lower values
+  for (let i = 0; i < 256; i++) {
+    numChildren(8, i);
+  }
+
+  // for each number in input calculate number of children after 18 steps
+  // sum them all up and add length of input
+  let sum = 0;
+  for (const number of input) {
+    const children = numChildren(number, 256);
+    sum += children;
+  }
+  sum += input.length;
+  console.log(sum);
+}
+
+part2();
