@@ -85,16 +85,10 @@ function part1() {
   // read file day06input
   let input = readInput("day06input");
 
-  input.print();
-
   // process input 256 times
   for (let i = 0; i < 256; i++) {
     input = process(input);
-    console.log(i);
-    // input.print();
   }
-  // print the list
-  //   input.print();
 
   // print length of list
   console.log(input.length());
