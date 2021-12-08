@@ -18,3 +18,4 @@ None of the code was written by me. I only write comments and then use autocompl
 ## Lowlights so far
 
 - day6 part 2. Copilot didn't understand what I want. Had to hand code it.
+- day8 part 2. I have no idea how I should've explained the solution to copilot, so again manual implementation.
