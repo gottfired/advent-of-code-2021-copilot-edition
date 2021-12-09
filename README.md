@@ -1,6 +1,6 @@
 # Advent of code 2021 github copilot edition
 
-None of the code was written by me. I only write comments and then use autocomplete.
+None of the code was written by me (except so far for 6/pt2 and 8/pt2, where I gave up and implemented manually). I only write comments and then use autocomplete.
 
 ## Screencast of day 7
 
