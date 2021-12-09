@@ -14,6 +14,7 @@ None of the code was written by me. I only write comments and then use autocompl
 
 - day2 I could copy and paste the instructions from AOC and it worked
 - day5 I could say `// function part2 is the same as part1 but also with diagonal lines`. **Thats pretty amazing!**
+- day9 Recursive flood fill algorithm without me needing to touch the code. Also whole day went very smooth with minimal rephrasing.
 
 ## Lowlights so far
 
