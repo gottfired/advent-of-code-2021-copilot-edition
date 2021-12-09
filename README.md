@@ -2,6 +2,10 @@
 
 None of the code was written by me. I only write comments and then use autocomplete.
 
+## Screencast of day 7
+
+https://youtu.be/XvoCyVFQOm8
+
 ## Lessons learned
 
 - Use types. Days 1-4 I used plain JS, but without type information copilot often didn't have enough information to use data structures in a correct way. I had to explicitely e.g. say "data is a 2d matrix of numbers"
