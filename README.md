@@ -27,4 +27,4 @@ https://youtu.be/XvoCyVFQOm8
 
 - day6 part 2. Copilot didn't understand what I want. Had to hand code it.
 - day8 part 2. I have no idea how I should've explained the solution to copilot, so again manual implementation.
-- day11. I was too dumb to read the instructions correctly (thoght the octopus flash at 9, not > 9). This lead to wrong autocompleted code, which I had to fix up manually. Also copilot refused to increase the neighbours after flashing for whatever reason. Had to +1 by adding a separate `// increase neighbour` comment.
+- day11. I was too dumb to read the instructions correctly (thoght the octopus flash at 9, not > 9). This lead to wrong autocompleted code, which I had to fix up manually. Also copilot refused to increase the neighbours after flashing for whatever reason. Had to +1 by adding a separate `// increase neighbour` comment. Also copilot used lodash fill for allocating the 2d flashed array which was wrong. Had to tell copilot to init the array not using lodash.
