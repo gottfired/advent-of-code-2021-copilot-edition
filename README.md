@@ -16,6 +16,7 @@ https://youtu.be/XvoCyVFQOm8
   - On day5 I used types and natural language. The result was a lot better.
 - day7 part 2. Had to put the cost algorithm into a separate function, otherwise codepilot insisted on reusing the same cost function as for part 1.
 - In general already start off by separating your code into functions. It's easier for copilot to reference those steps later on. Also refactoring with copilot later on doesn't work and I'm **not allowed to touch the code** which is a problem. Sometimes I had the case where an algorithm was autocompleted correctly and as I wanted to describe the same thing as a separate function using the same wording, copilot refused to write it correctly again. I have the suspicion that copilot, if a code is once generated doesn't repeat itself thinking that the code before might have been wrong and thus tries to find a more correct solution if provided with the same comments.
+- Starting from day11 avoiding manual course correction get very tedious. I decided to allow minimal correctiony by hand, because the code is often 99% correct, but reformulating the comments to get it 100% correct takes too much time. Unfortunately 1% wrong e.g. with recursive functions often leads to a stack overflow :)
 
 ## Highlights so far
 

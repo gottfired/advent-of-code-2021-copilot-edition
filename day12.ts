@@ -54,6 +54,54 @@ class Node {
 
     return paths;
   }
+
+  // function getPathsDoubleVisit with input
+  // currentPath: Path
+  // paths: array of all paths
+  // doubleVisit: value of node that is allowed to be visited twice
+  // function is recursive
+  // append current node value to currentPath
+  // if current node is "end", add currentPath to paths and exit
+  // for each big neighbor, call getPaths with a deep copy of currentPath and paths
+  // for each small neighbor, that is not in currentPath (except for doubleVisit, which is allowed to be at most once in currentPath), call getPaths with a deep copy of currentPath and paths.
+  // return paths
+  getPathsDoubleVisit(
+    currentPath: Path,
+    paths: Path[],
+    doubleVisit: string
+  ): Path[] {
+    // append current node value to currentPath
+    currentPath.push(this.value);
+
+    // if current node is "end", add currentPath to paths and exit
+    if (this.value === "end") {
+      paths.push(currentPath);
+      return paths;
+    }
+
+    // for each big neighbor, call getPaths with a deep copy of currentPath and paths
+    for (let neighbor of this.neighbors) {
+      if (!neighbor.isSmall) {
+        neighbor.getPathsDoubleVisit(currentPath.slice(), paths, doubleVisit);
+      }
+    }
+
+    // for each small neighbor, that is not in currentPath (except for doubleVisit, which is allowed to be at most once in currentPath), call getPaths with a deep copy of currentPath and paths.
+    for (let neighbor of this.neighbors) {
+      if (neighbor.isSmall) {
+        // if neighbor is not in currentPath, call getPaths with a deep copy of currentPath and paths
+        if (!currentPath.includes(neighbor.value)) {
+          neighbor.getPathsDoubleVisit(currentPath.slice(), paths, doubleVisit);
+        }
+        // if neighbor is in currentPath and doubleVisit call getPaths with a deep copy of currentPath and paths and set doubleVisit to ""
+        else if (neighbor.value === doubleVisit) {
+          neighbor.getPathsDoubleVisit(currentPath.slice(), paths, "");
+        }
+      }
+    }
+
+    return paths;
+  }
 }
 
 // class Graph
@@ -135,4 +183,36 @@ function part1() {
   console.log(paths.length);
 }
 
-part1();
+function part2() {
+  // read file day12sample
+  let graph = readFile("day12input");
+
+  // get list of all small nodes which are not start and end
+  let smallNodes = _.filter(graph.nodes, (node) => node.isSmall);
+  let smallNodesNotStartEnd = _.filter(
+    smallNodes,
+    (node) => !["start", "end"].includes(node.value)
+  );
+
+  // for each small node, find all paths from start if start exists, use smallNode's value as doubleVisit
+  // sum up all paths in totalPaths
+  let totalPaths: any = [];
+  for (let smallNode of smallNodesNotStartEnd) {
+    let paths = graph.start
+      ? graph.start.getPathsDoubleVisit([], [], smallNode.value)
+      : [];
+
+    totalPaths = totalPaths.concat(paths);
+  }
+
+  // convert paths to comma separated strings
+  let paths = _.map(totalPaths, (path) => path.join(","));
+
+  // remove duplicates
+  paths = _.uniq(paths);
+
+  // pretty print sum
+  console.log(paths.length);
+}
+
+part2();
